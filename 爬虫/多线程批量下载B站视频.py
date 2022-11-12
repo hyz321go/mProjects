@@ -31,7 +31,9 @@ def downloading_video(threadName, q):
             queueLock.release()
             # print("%s downloading %s" % (threadName, videoUrl))
             # 第一种方法用os调用you-get
-            cmd = "you-get -o E://media_python/ " + videoUrl
+            # cmd = "you-get -o E://Videos/ " + videoUrl
+            # 注意！！！这里添加的--playlist适用于B站分P视频下载，这样就可以直接打包下载了
+            cmd = "you-get --playlist -o E://Videos/ " + videoUrl
             os.system(cmd)
             # 第二种方法用sys调用you-get ...我觉得没上面的方便
             # path = 'E:\\video\'   #设置下载目录
@@ -44,8 +46,8 @@ def downloading_video(threadName, q):
 
 threadList = ["Thread-1", "Thread-2", "Thread-3", "Thread-4", "Thread-5", "Thread-6"]  # 线程个数
 videoList = [
-    "https://www.bilibili.com/video/BV1G14y1s7QJ",
-    "https://www.bilibili.com/video/BV1rt4y1z7fo"
+    "https://www.bilibili.com/video/BV1fe4y1n7K6",
+    # "https://www.bilibili.com/video/BV1rt4y1z7fo"
 ]  # 待下载的视频列表
 
 queueLock = threading.Lock()
